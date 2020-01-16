@@ -1,0 +1,15 @@
+name: Check problem format
+on: push
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout ${{ github.sha }}
+      uses: actions/checkout@v2
+    - name: Use Go 1.13
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+    - name: Test
+      run: go run checkformat.go
